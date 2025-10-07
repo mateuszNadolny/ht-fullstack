@@ -3,7 +3,9 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
-import prisma from "./prismaClient.ts";
+import habitRoutes from "./routes/habitRoutes.ts";
+import recordRoutes from "./routes/recordRoutes.ts";
+import authRoutes from "./routes/authRoutes.ts";
 
 dotenv.config();
 
@@ -15,8 +17,14 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 
-app.get("/", async (req, res) => {
-  console.log("enpoint working ✅");
+app.use("/api/habit", habitRoutes);
+
+app.use("/api/record", recordRoutes);
+
+app.use("/auth", authRoutes);
+
+app.get("/", (req, res) => {
+  res.sendStatus(200);
 });
 
 app.listen(PORT, () => {
