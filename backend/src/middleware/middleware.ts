@@ -1,15 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-// Extend Express Request type to include userId property
-declare global {
-  namespace Express {
-    interface Request {
-      userId?: number;
-    }
-  }
-}
-
 function authMiddleware(req: Request, res: Response, next: NextFunction) {
   // Get the authorization header
   const authHeader = req.headers["authorization"];

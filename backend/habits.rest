@@ -5,7 +5,7 @@ POST http://localhost:5003/auth/register
 Content-Type: application/json
 
 {
-"email": "gilgamesh@gmail.com", "password": "123123123"
+"email": "gilgamesh23@gmail.com", "password": "123123123"
 }
 
 ### Login a user POST /AUTH/LOGIN 
@@ -13,5 +13,33 @@ POST http://localhost:5003/auth/login
 Content-Type: application/json
 
 {
-"email": "gilgamesh@gmail.com", "password": "123123123"
+"email": "gilgamesh23@gmail.com", "password": "123123123"
 }
+
+### Get all habits for single user
+GET http://localhost:5003/api/habit
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+
+### Add new habit for the user
+POST http://localhost:5003/api/habit
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+Content-Type: application/json
+
+{
+"title": "play football"
+}
+
+### Update existing habit
+PUT http://localhost:5003/api/habit/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+Content-Type: application/json
+
+{
+"id": 4,
+"title": "play basketball"
+}
+
+### Delete existing habit
+DELETE http://localhost:5003/api/habit/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+Content-Type: application/json
