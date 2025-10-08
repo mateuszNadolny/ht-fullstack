@@ -5,7 +5,7 @@ POST http://localhost:5003/auth/register
 Content-Type: application/json
 
 {
-"email": "gilgamesh23@gmail.com", "password": "123123123"
+"email": "gilgamesh2956@gmail.com", "password": "123123123"
 }
 
 ### Login a user POST /AUTH/LOGIN 
@@ -13,7 +13,7 @@ POST http://localhost:5003/auth/login
 Content-Type: application/json
 
 {
-"email": "gilgamesh23@gmail.com", "password": "123123123"
+"email": "gilgamesh2956@gmail.com", "password": "123123123"
 }
 
 ### Get all habits for single user
