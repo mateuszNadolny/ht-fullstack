@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import prisma from "../prismaClient.ts";
+import prisma from "../prismaClient.js";
 
 export const registerUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -34,7 +34,9 @@ export const registerUser = async (req: Request, res: Response) => {
     });
     res.json({ token });
   } catch (err) {
-    console.log(err.message);
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
     res.sendStatus(503);
   }
 };
@@ -64,7 +66,9 @@ export const loginUser = async (req: Request, res: Response) => {
     });
     res.json({ token });
   } catch (err) {
-    console.error(err.message);
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
     res.sendStatus(503);
   }
 };

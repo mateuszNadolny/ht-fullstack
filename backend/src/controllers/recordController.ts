@@ -1,23 +1,20 @@
 import type { Request, Response } from "express";
 import prisma from "../prismaClient.js";
 
-export const getAllHabits = async (req: Request, res: Response) => {
+export const getAllRecords = async (req: Request, res: Response) => {
   const userId = req.userId;
+  const { habitId } = req.body;
 
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    const result = await prisma.habit.findMany({
+    const result = await prisma.record.findMany({
       where: {
-        userId: userId,
+        habitId: habitId,
       },
     });
-
-    if (result.length < 1) {
-      return `<h2>No habits yet</h2>`;
-    }
 
     res.json(result);
   } catch (err) {
@@ -27,27 +24,27 @@ export const getAllHabits = async (req: Request, res: Response) => {
   }
 };
 
-export const addNewHabit = async (req: Request, res: Response) => {
+export const addNewRecord = async (req: Request, res: Response) => {
   const userId = req.userId;
-  const { title } = req.body;
+  const { date, habitId } = req.body;
 
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    const habit = await prisma.habit.create({
+    const record = await prisma.record.create({
       data: {
-        userId: userId,
-        title: title,
+        habitId: habitId,
+        date: date,
       },
     });
 
-    if (!habit) {
-      return `<h2>No habits yet</h2>`;
+    if (!record) {
+      return res.status(404).json({ message: "Wrong habit" });
     }
 
-    res.json(habit);
+    res.json(record);
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
@@ -55,10 +52,10 @@ export const addNewHabit = async (req: Request, res: Response) => {
   }
 };
 
-export const updateHabit = async (req: Request, res: Response) => {
+export const updateRecord = async (req: Request, res: Response) => {
   const userId = req.userId;
   const habitId = +req.params.id;
-  const { title } = req.body;
+  const { date } = req.body;
 
   if (!userId || !habitId) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -79,16 +76,16 @@ export const updateHabit = async (req: Request, res: Response) => {
       return res.status(403).json({ message: "Forbidden" });
     }
 
-    const updatedHabit = await prisma.habit.update({
-      where: {
-        id: habit.id,
-      },
-      data: {
-        title: title,
-      },
-    });
+    // const updatedHabit = await prisma.habit.update({
+    //   where: {
+    //     id: habit.id,
+    //   },
+    //   data: {
+    //     date: date,
+    //   },
+    // });
 
-    res.json(updatedHabit);
+    // res.json(updatedHabit);
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
@@ -96,7 +93,7 @@ export const updateHabit = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteHabit = async (req: Request, res: Response) => {
+export const deleteRecord = async (req: Request, res: Response) => {
   const userId = req.userId;
   const habitId = +req.params.id;
 

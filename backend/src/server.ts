@@ -3,9 +3,9 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
-import habitRoutes from "./routes/habitRoutes.ts";
-import recordRoutes from "./routes/recordRoutes.ts";
-import authRoutes from "./routes/authRoutes.ts";
+import habitRoutes from "./routes/habitRoutes.js";
+import recordRoutes from "./routes/recordRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 

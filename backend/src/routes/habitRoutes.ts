@@ -4,8 +4,8 @@ import {
   addNewHabit,
   updateHabit,
   deleteHabit,
-} from "../controllers/habitController.ts";
-import authMiddleware from "../middleware/middleware.ts";
+} from "../controllers/habitController.js";
+import authMiddleware from "../middleware/middleware.js";
 
 const router = express.Router();
 
