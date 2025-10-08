@@ -3,5 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 4000
-CMD ["node", "src/server.ts"]
+RUN npx prisma generate
+RUN npm run build
+EXPOSE 5003
+CMD ["node", "dist/server.js"]
