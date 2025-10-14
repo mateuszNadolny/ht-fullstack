@@ -5,7 +5,7 @@ POST http://localhost:5003/auth/register
 Content-Type: application/json
 
 {
-"email": "gilgamesh2956@gmail.com", "password": "123123123"
+"email": "gilgamesh2958@gmail.com", "password": "123123123"
 }
 
 ### Login a user POST /AUTH/LOGIN 
@@ -13,16 +13,16 @@ POST http://localhost:5003/auth/login
 Content-Type: application/json
 
 {
-"email": "gilgamesh2956@gmail.com", "password": "123123123"
+"email": "gilgamesh2958@gmail.com", "password": "123123123"
 }
 
 ### Get all habits for single user
 GET http://localhost:5003/api/habit
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwMTg5NjIyLCJleHAiOjE3NjAyNzYwMjJ9.i93kfc_IK46K6FwRU5KT33aR4-Wx8HzDP3qSCFkAMAg
 
 ### Add new habit for the user
 POST http://localhost:5003/api/habit
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwMTg5NjIyLCJleHAiOjE3NjAyNzYwMjJ9.i93kfc_IK46K6FwRU5KT33aR4-Wx8HzDP3qSCFkAMAg
 Content-Type: application/json
 
 {
@@ -30,16 +30,16 @@ Content-Type: application/json
 }
 
 ### Update existing habit
-PUT http://localhost:5003/api/habit/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+PUT http://localhost:5003/api/habit/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwMTg5NjIyLCJleHAiOjE3NjAyNzYwMjJ9.i93kfc_IK46K6FwRU5KT33aR4-Wx8HzDP3qSCFkAMAg
 Content-Type: application/json
 
 {
-"id": 4,
+"id": 1,
 "title": "play basketball"
 }
 
 ### Delete existing habit
-DELETE http://localhost:5003/api/habit/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzU5ODY0Nzk5LCJleHAiOjE3NTk5NTExOTl9.MvVBKTyduyRLw0OP5MjgiZ0HV3VOC--TZ4bBGSrPkXs
+DELETE http://localhost:5003/api/habit/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwMTg5NjIyLCJleHAiOjE3NjAyNzYwMjJ9.i93kfc_IK46K6FwRU5KT33aR4-Wx8HzDP3qSCFkAMAg
 Content-Type: application/json
