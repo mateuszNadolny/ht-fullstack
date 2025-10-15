@@ -20,13 +20,18 @@ services:
     ports:
       - "5003:5003"
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
     environment:
-      VITE_API_URL: "http://backend:5003"
+      VITE_API_URL: "http://localhost:5003"
     depends_on:
       - "backend"
     ports:
-      - "3000:3000"
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   pgdata:
