@@ -32,12 +32,36 @@ export const registerUser = async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "24h",
     });
-    res.json({ token });
+
+    // Set token as httpOnly cookie
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    });
+
+    res.json({ success: true, message: "Registration successful" });
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
     }
     res.sendStatus(503);
+  }
+};
+
+export const checkAuth = async (req: Request, res: Response) => {
+  const token = req.cookies.authToken;
+
+  if (!token) {
+    return res.json({ authenticated: false });
+  }
+
+  try {
+    jwt.verify(token, process.env.JWT_SECRET!);
+    res.json({ authenticated: true });
+  } catch (err) {
+    res.json({ authenticated: false });
   }
 };
 
@@ -64,7 +88,16 @@ export const loginUser = async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
       expiresIn: "24h",
     });
-    res.json({ token });
+
+    // Set token as httpOnly cookie
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    });
+
+    res.json({ success: true, message: "Login successful" });
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);

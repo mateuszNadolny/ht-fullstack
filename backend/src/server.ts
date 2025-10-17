@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
+import cookieParser from "cookie-parser";
 import habitRoutes from "./routes/habitRoutes.js";
 import recordRoutes from "./routes/recordRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
@@ -25,7 +26,13 @@ const limiter = rateLimit({
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL but this will probably require update before deplyment
+    credentials: true, // Allow cookies to be sent
+  })
+);
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(limiter);
