@@ -55,6 +55,14 @@ docker build -t my-app .
 docker run -p 3000:3000 my-app
 ```
 
+# Down the dev container
+
+docker-compose -f docker-compose.dev.yml down
+
+# Rebuild the dev container
+
+docker-compose -f docker-compose.dev.yml up --build
+
 The containerized application can be deployed to any platform that supports Docker, including:
 
 - AWS ECS
